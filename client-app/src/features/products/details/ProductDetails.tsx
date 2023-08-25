@@ -1,30 +1,40 @@
-import { Button, Card, Image, Label } from "semantic-ui-react";
-import { Product } from "../../../app/layout/models/product";
+import { Grid } from "semantic-ui-react";
+import { useStore } from "../../../app/stores/store";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { observer } from "mobx-react-lite";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import ProductDetailedHeader from "./ProductDetailedHeader";
+import ProductDetailedInfo from "./ProductDetailedInfo";
+import ProductDetailedChat from "./ProductDetailedChat";
+import ProductDetailedSidebar from "./ProductDetailedSidebar";
 
-interface Props {
-  product: Product;
-  cancelSelectProduct: () => void;
-  openForm: (id: string) => void;
-}
+export default observer(function ProductDetails() {
+  const { productStore } = useStore();
+  const {
+    selectedProduct: product,
+    loadProduct,
+    loadingInitial,
+  } = productStore;
 
-export default function ProductDetails({ product, cancelSelectProduct, openForm }: Props) {
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) loadProduct(id);
+  }, [id, loadProduct]);
+
+  if (loadingInitial || !product) return <LoadingComponent />;
+
   return (
-    <Card fluid>
-      <Image src={`/assets/categoryImages/${product.category}.jpg`} />
-      <Card.Content>
-        <Card.Header>{product.title}</Card.Header>
-        <Card.Meta>
-          <span>{product.date}</span>
-        </Card.Meta>
-        <Card.Description>{product.description}</Card.Description>
-        <Label as='a' tag>{product.campaign}</Label>
-      </Card.Content>
-      <Card.Content extra>
-        <Button.Group widths="2">
-          <Button onClick={() => openForm(product.id)} basic color="blue" content="Edit" />
-          <Button onClick={cancelSelectProduct} basic color="grey" content="Cancel" />
-        </Button.Group>
-      </Card.Content>
-    </Card>
+    <Grid>
+      <Grid.Column width={10}>
+        <ProductDetailedHeader product={product} />
+        <ProductDetailedInfo product={product} />
+        <ProductDetailedChat />
+      </Grid.Column>
+      <Grid.Column width={6}>
+        <ProductDetailedSidebar />
+      </Grid.Column>
+    </Grid>
   );
-}
+});
