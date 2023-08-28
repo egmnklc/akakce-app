@@ -7,88 +7,88 @@ namespace Persistence
         public static async Task SeedData(DataContext context)
         {
             if (context.Products.Any()) return;
-            
+
             var products = new List<Product>
             {
                 new Product
                 {
-                    Title = "Product 1",
+                    Title = "HP Victus 16-S0023NT 7Z4N1EA Ryzen 5 7640HS 16 GB 512 GB SSD RTX4060",
                     Date = DateTime.UtcNow.AddMonths(-2),
-                    Description = "Product description 1",
-                    Category = "drinks",
-                    Campaign = "London",
+                    Description = "Laptop / Notebook, Full HD, HP Victus, IPS, Bluetooth, Klavye Aydınlatması, İşlemci Hızı: 4.30 GHz, İşlemci Çekirdek Sayısı: 6",
+                    Category = "laptop",
+                    Campaign = "15% Student discount",
                 },
                 new Product
                 {
-                    Title = "Product 2",
+                    Title = "Samsung Premium AR18TSHZHWK A++ 18000 BTU Inverter Duvar Tipi Klima",
                     Date = DateTime.UtcNow.AddMonths(-1),
-                    Description = "Product description 2",
-                    Category = "culture",
-                    Campaign = "Louvre",
+                    Description = "nverter, Nem Alma, Sessiz, Tipi: Duvar Tipi (Split), BTU Değeri: 18.000 BTU, Ses Seviyesi: 58 dB",
+                    Category = "cooler",
+                    Campaign = "Same day cargo",
                 },
                 new Product
                 {
-                    Title = "Product 3",
+                    Title = "iPhone 13 128 GB",
                     Date = DateTime.UtcNow.AddMonths(1),
-                    Description = "Product description 3",
-                    Category = "culture",
-                    Campaign = "Natural History Museum",
+                    Description = "Dahili Hafıza: 128 GB, RAM Kapasitesi: 4 GB, Ekran Boyutu: 6.1 inç, Ekran Çözünürlüğü: 1170x2532 px, Çıkış Yılı: 2021, Ekran Yenileme Hızı: 60 Hz",
+                    Category = "phone",
+                    Campaign = "10% off",
                 },
                 new Product
                 {
-                    Title = "Product 4",
+                    Title = "Intel Arc A750 21P02J00BA 256 Bit GDDR6 8 GB Ekran Kartı",
                     Date = DateTime.UtcNow.AddMonths(2),
-                    Description = "Product description 4",
-                    Category = "music",
-                    Campaign = "O2 Arena",
+                    Description = "ARC A750, Bellek: 8 GB, INTEL, GDDR6, Bellek Arabirimi: 256 Bit, HDMI, Display Port, DirectX 12 Ultimate",
+                    Category = "graphics card",
+                    Campaign = "",
                 },
                 new Product
                 {
-                    Title = "Product 5",
+                    Title = "Samsung CRG5 LC24RG50FZRXUF",
                     Date = DateTime.UtcNow.AddMonths(3),
-                    Description = "Product description 5",
-                    Category = "drinks",
-                    Campaign = "Another pub",
+                    Description = "Ekran Boyutu: 24 inç, Full HD, Yenileme Hızı: 144 Hz, Çözünürlük: 1920x1080 px, Tepki Süresi: 4 ms, HDMI, DisplayPort",
+                    Category = "monitor",
+                    Campaign = "",
                 },
                 new Product
                 {
-                    Title = "Product 6",
+                    Title = "Samsung CR50 LC27R500FHPXUF",
                     Date = DateTime.UtcNow.AddMonths(4),
-                    Description = "Product description 6",
-                    Category = "drinks",
-                    Campaign = "Yet another pub",
+                    Description = "Ekran Boyutu: 27 inç, Full HD, Yenileme Hızı: 60 Hz, VA, Çözünürlük: 1920x1080 px, Tepki Süresi: 4 ms, HDMI",
+                    Category = "monitor",
+                    Campaign = "Free cargo, Fast cargo",
                 },
                 new Product
                 {
-                    Title = "Product 7",
+                    Title = "TCL 55P635 4K Ultra HD 55' 140 Ekran Uydu Alıcılı Google Smart LED TV",
                     Date = DateTime.UtcNow.AddMonths(5),
-                    Description = "Product description 7",
-                    Category = "drinks",
-                    Campaign = "Just another pub",
+                    Description = "4K, 55 inç / 140 cm, USB Port Sayısı: 2 , Bluetooth, Çıkış Yılı: 2022, Çözünürlük: 3840x2160 px, Uydu Alıcılı",
+                    Category = "tv",
+                    Campaign = "Buy 1 get 1",
                 },
                 new Product
                 {
-                    Title = "Product 8",
+                    Title = "Casper Excalibur G870.1245-BFA0X-B i5-12450H 16 GB 1 TB SSD RTX4050",
                     Date = DateTime.UtcNow.AddMonths(6),
-                    Description = "Product description 8",
-                    Category = "music",
-                    Campaign = "Roundhouse Camden",
+                    Description = "Laptop / Notebook, Full HD, Casper Excalibur, IPS, İşlemci Hızı: 3.3 GHz, İşlemci Çekirdek Sayısı: 8, İşlemci Önbelleği: 12 MB",
+                    Category = "laptop",
+                    Campaign = "20% off at basket",
                 },
                 new Product
                 {
-                    Title = "Product 9",
+                    Title = "AirPods Pro",
                     Date = DateTime.UtcNow.AddMonths(7),
-                    Description = "Product description 9",
-                    Category = "travel",
-                    Campaign = "Somewhere on the Thames",
+                    Description = "Aktif Gürültü Önleme, Müzik Dinleyebilme, Kulak İçi, TWS, AirPods, Bluetooth Versiyonu: 5, Konuşma Süresi: 3.5 saat, Müzik Dinleme Süresi: 4.5 saat",
+                    Category = "bluetooth-headset",
+                    Campaign = "Free cargo",
                 },
                 new Product
                 {
-                    Title = "Product 10",
+                    Title = "Gigabyte G5 MF-E2EE333SD i5-12500H 8 GB 512 GB SSD RTX4050",
                     Date = DateTime.UtcNow.AddMonths(8),
-                    Description = "Product description 10",
-                    Category = "film",
-                    Campaign = "Cinema",
+                    Description = "Laptop / Notebook, Full HD, Bluetooth, Klavye Aydınlatması, İşlemci Hızı: 3.3 GHz, İşlemci Çekirdek Sayısı: 12, İşlemci Önbelleği: 18 MB",
+                    Category = "laptop",
+                    Campaign = "10% off",
                 }
             };
 

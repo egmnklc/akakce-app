@@ -10,6 +10,7 @@ export default function NavBar() {
           Product-Compare
         </Menu.Item>
         <Menu.Item as={NavLink} to={"/products"} name="Products" />
+        <Menu.Item as={NavLink} to={"/errors"} name="Errors" />
         <Menu.Item>
           <Button
             as={NavLink}

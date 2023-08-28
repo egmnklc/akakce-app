@@ -1,6 +1,8 @@
 import { observer } from "mobx-react-lite";
 import { Button, Header, Item, Segment, Image } from "semantic-ui-react";
 import { Product } from "../../../app/layout/models/product";
+import { Link } from "react-router-dom";
+import { format } from "date-fns";
 
 const productImageStyle = {
   filter: "brightness(30%)",
@@ -37,7 +39,7 @@ export default observer(function ProductDetailedHeader({ product }: Props) {
                   content={product.title}
                   style={{ color: "white" }}
                 />
-                <p>{product.date}</p>
+                <p>{format(new Date(product.date!), 'dd MMM yyyy')}</p>
                 <p>
                   Added by <strong>Bob</strong>
                 </p>
@@ -49,7 +51,7 @@ export default observer(function ProductDetailedHeader({ product }: Props) {
       <Segment clearing attached="bottom">
         <Button color="teal">Join product</Button>
         <Button>Cancel attendance</Button>
-        <Button color="orange" floated="right">
+        <Button as={Link} to={`/manage/${product.id}`} color="orange" floated="right">
           Manage Event
         </Button>
       </Segment>

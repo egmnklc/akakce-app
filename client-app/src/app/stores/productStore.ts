@@ -75,7 +75,7 @@ export default class ProductStore {
   };
 
   private setProduct = (product: Product) => {
-    product.date = product.date.split("T")[0];
+    product.date = new Date(product.date!);
     this.productRegistry.set(product.id, product);
   };
 

@@ -1,6 +1,7 @@
 import { Button, Icon, Item, Segment } from "semantic-ui-react";
 import { Product } from "../../../app/layout/models/product";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 
 interface Props {
   product: Product;
@@ -12,7 +13,7 @@ export default function ProductListItem({ product }: Props) {
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image size="tiny" circular src="/assets/user.png" />
+            <Item.Image size="tiny" src={`/assets/categoryImages/${product.category}.jpg`} />
             <Item.Content>
               <Item.Header as={Link} to={`/products/${product.id}`}>
                 {product.title}
@@ -28,7 +29,7 @@ export default function ProductListItem({ product }: Props) {
       </Segment>
       <Segment clearing>
         <span>
-          <Icon name="clock" /> {product.date}
+          <Icon name="clock" /> {format(new Date(product.date!), 'dd MMM yyyy h:mm aa')}
         </span>
         <Button
           as={Link}
