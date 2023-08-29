@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { Product } from "../layout/models/product";
+import { Product } from "../models/product";
 import agent from "../api/agent";
 import { v4 as uuid } from "uuid";
 

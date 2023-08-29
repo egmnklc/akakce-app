@@ -1,15 +1,12 @@
-using System.Runtime.CompilerServices;
 using Application;
 using Application.Products;
 using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class ProductsController : BaseApiController
     {
         [HttpGet]

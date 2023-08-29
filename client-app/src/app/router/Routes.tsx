@@ -7,6 +7,7 @@ import ProductDetails from "../../features/products/details/ProductDetails";
 import TestErrors from "../../features/products/errors/TestError";
 import NotFound from "../../features/products/errors/NotFound";
 import ServerError from "../../features/products/errors/ServerError";
+import LoginForm from "../../features/users/LoginForm";
 
 export const routes: RouteObject[] = [
   {
@@ -18,6 +19,7 @@ export const routes: RouteObject[] = [
       { path: "products/:id", element: <ProductDetails /> },
       { path: "createProduct", element: <ProductForm key="create" /> },
       { path: "manage/:id", element: <ProductForm key="manage" /> },
+      { path: "login", element: <LoginForm /> },
       { path: "errors", element: <TestErrors /> },
       { path: "not-found", element: <NotFound /> },
       { path: "server-error", element: <ServerError /> },

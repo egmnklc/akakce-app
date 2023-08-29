@@ -1,5 +1,5 @@
 import { Button, Icon, Item, Segment } from "semantic-ui-react";
-import { Product } from "../../../app/layout/models/product";
+import { Product } from "../../../app/models/product";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 

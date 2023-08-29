@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { Segment, Grid, Icon } from "semantic-ui-react";
-import { Product } from "../../../app/layout/models/product";
+import { Product } from "../../../app/models/product";
 import { format } from "date-fns";
 
 interface Props {
