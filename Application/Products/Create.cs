@@ -34,10 +34,9 @@ namespace Application.Products
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 _context.Products.Add(request.Product);
-
+                
                 var result = await _context.SaveChangesAsync() > 0;
                     if(!result) return  Result<Unit>.Failure("Failed to create product");
-                
                 
                 return Result<Unit>.Success(Unit.Value);
             }

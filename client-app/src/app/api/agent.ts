@@ -74,6 +74,11 @@ const requests = {
 
 const Products = {
   list: () => requests.get<Product[]>("/products"),
+  userproducts: (userId?: string) => {
+    // Check if userId is provided, then append it as a query parameter
+    const url = userId ? `/products?userId=${userId}` : '/products';
+    return requests.get<Product[]>(url);
+  },
   details: (id: string) => requests.get<Product>(`/products/${id}`),
   create: (product: Product) => requests.post<void>("/products", product),
   update: (product: Product) =>

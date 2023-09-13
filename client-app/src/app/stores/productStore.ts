@@ -2,6 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { Product } from "../models/product";
 import agent from "../api/agent";
 import { v4 as uuid } from "uuid";
+import { useStore } from "./store";
 
 export default class ProductStore {
   productRegistry = new Map<string, Product>();
@@ -9,7 +10,6 @@ export default class ProductStore {
   editMode = false;
   loading = false;
   loadingInitial = false;
-
   constructor() {
     makeAutoObservable(this);
   }
@@ -32,7 +32,7 @@ export default class ProductStore {
           ? [...products[category], product]
           : [product];
         return products;
-      }, {} as {[key: string]: Product[]})
+      }, {} as { [key: string]: Product[] })
     );
   }
 
@@ -48,6 +48,34 @@ export default class ProductStore {
       this.setLoadingInitial(false);
     } catch (err) {
       console.log(err);
+      this.setLoadingInitial(false);
+    }
+  };
+
+  loadUserProducts = async () => {
+    this.setLoadingInitial(true); // Set the loading state
+
+    // Assuming you have a UserStore with a currentUser property
+    const userStore = useStore().userStore;
+    const username = userStore.getUsername;
+
+    // Check if username is present
+    if (!username) {
+      console.error("No username found. Ensure user is logged in.");
+      this.setLoadingInitial(false);
+      return;
+    }
+
+    try {
+      const products = await agent.Products.userproducts(username);
+      runInAction(() => {
+        products.forEach((product) => {
+          this.setProduct(product);
+        });
+        this.setLoadingInitial(false);
+      });
+    } catch (err) {
+      console.error("Error loading user's products:", err);
       this.setLoadingInitial(false);
     }
   };
@@ -87,18 +115,24 @@ export default class ProductStore {
     this.loadingInitial = state;
   };
 
-  createProduct = async (product: Product) => {
+  createProduct = async (product: Product, ownerId: string) => {
     this.loading = true;
     product.id = uuid();
+    product.owner = ownerId;
+    console.log(product.owner);
+    const response = await agent.Products.create(product);
+    console.log("Server response:", response);
+
     try {
-      await agent.Products.create(product);
       runInAction(() => {
         this.productRegistry.set(product.id, product);
         this.selectedProduct = product;
         this.editMode = false;
         this.loading = false;
       });
+      console.log("Server response:", response);
     } catch (error) {
+      console.log("Server response:", response);
       console.log(error);
       runInAction(() => {
         this.loading = false;

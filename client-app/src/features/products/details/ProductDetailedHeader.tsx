@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { Button, Header, Item, Segment, Image } from "semantic-ui-react";
 import { Product } from "../../../app/models/product";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import { useStore } from "../../../app/stores/store";
 
 const productImageStyle = {
   filter: "brightness(30%)",
@@ -22,6 +23,20 @@ interface Props {
 }
 
 export default observer(function ProductDetailedHeader({ product }: Props) {
+  const { userStore, productStore } = useStore();
+  const { deleteProduct, loading } = productStore;
+
+  const loggedInUsername = userStore.getUsername;
+  const navigate = useNavigate();
+  const handleDeleteProduct = async () => {
+    try {
+      // Redirect user to the list of products after a successful deletion or display a success message.
+      deleteProduct(product.id).then(() => navigate("/products"));
+    } catch (error) {
+      // Display an error message to the user.
+      console.log(error);
+    }
+  };
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: "0" }}>
@@ -39,22 +54,37 @@ export default observer(function ProductDetailedHeader({ product }: Props) {
                   content={product.title}
                   style={{ color: "white" }}
                 />
-                <p>{format(new Date(product.date!), 'dd MMM yyyy')}</p>
+                <p>{format(new Date(product.date!), "dd MMM yyyy")}</p>
                 <p>
-                  Added by <strong>Bob</strong>
+                  Added by{" "}
+                  <strong>{product.owner ? product.owner : "System"}</strong>
                 </p>
               </Item.Content>
             </Item>
           </Item.Group>
         </Segment>
       </Segment>
-      <Segment clearing attached="bottom">
-        <Button color="teal">Join product</Button>
-        <Button>Cancel attendance</Button>
-        <Button as={Link} to={`/manage/${product.id}`} color="orange" floated="right">
-          Manage Event
-        </Button>
-      </Segment>
+
+      {userStore.isAdmin && product.owner === loggedInUsername && (
+        <Segment clearing attached="bottom">
+          <Button
+            as={Link}
+            to={`/manage/${product.id}`}
+            color="orange"
+            floated="right"
+          >
+            Manage Product
+          </Button>
+          <Button
+            loading={loading}
+            color="red"
+            floated="right"
+            onClick={handleDeleteProduct}
+          >
+            Delete Product
+          </Button>
+        </Segment>
+      )}
     </Segment.Group>
   );
 });

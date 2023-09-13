@@ -1,13 +1,11 @@
-import { Grid } from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { observer } from "mobx-react-lite";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ProductDetailedHeader from "./ProductDetailedHeader";
 import ProductDetailedInfo from "./ProductDetailedInfo";
-import ProductDetailedChat from "./ProductDetailedChat";
-import ProductDetailedSidebar from "./ProductDetailedSidebar";
 
 export default observer(function ProductDetails() {
   const { productStore } = useStore();
@@ -29,11 +27,16 @@ export default observer(function ProductDetails() {
     <Grid>
       <Grid.Column width={10}>
         <ProductDetailedHeader product={product} />
-        <ProductDetailedInfo product={product} />
-        <ProductDetailedChat />
+        <Button
+          as={Link}
+          to={"/products"}
+          content="Back to products page"
+          floated="right"
+          color="orange"
+        />
       </Grid.Column>
       <Grid.Column width={6}>
-        <ProductDetailedSidebar />
+        <ProductDetailedInfo product={product} />
       </Grid.Column>
     </Grid>
   );

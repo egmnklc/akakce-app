@@ -38,7 +38,7 @@ export default observer(function ProductDetailedInfo({ product }: Props) {
             <Icon name="newspaper" size="large" color="teal" />
           </Grid.Column>
           <Grid.Column width={11}>
-            <span>test, test1</span>
+            <span>Campaign: {product.campaign}</span>
           </Grid.Column>
         </Grid>
       </Segment>

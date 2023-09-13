@@ -10,9 +10,9 @@ namespace Persistence
             if (!userManager.Users.Any())
             {
                 var users = new List<AppUser>{
-                    new AppUser{DisplayName="Apple Store", UserName="Apple", Email=" "},
-                    new AppUser{DisplayName="Huawei Store", UserName="Huawei", Email="huawei@test.com"},
-                    new AppUser{DisplayName="Samsung Store", UserName="Samsung", Email="samsung@test.com"},
+                    new AppUser{DisplayName="Apple Store", UserName="Apple", Email="appstore@test.com", IsAdmin=true},
+                    new AppUser{DisplayName="Huawei Store", UserName="Huawei", Email="huawei@test.com", IsAdmin=true},
+                    new AppUser{DisplayName="Samsung Store", UserName="Samsung", Email="samsung@test.com", IsAdmin=true},
                 };
 
                 foreach (var user in users)
@@ -31,6 +31,7 @@ namespace Persistence
                     Description = "Laptop / Notebook, Full HD, HP Victus, IPS, Bluetooth, Klavye Aydınlatması, İşlemci Hızı: 4.30 GHz, İşlemci Çekirdek Sayısı: 6",
                     Category = "laptop",
                     Campaign = "15% Student discount",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -39,6 +40,7 @@ namespace Persistence
                     Description = "nverter, Nem Alma, Sessiz, Tipi: Duvar Tipi (Split), BTU Değeri: 18.000 BTU, Ses Seviyesi: 58 dB",
                     Category = "cooler",
                     Campaign = "Same day cargo",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -47,6 +49,7 @@ namespace Persistence
                     Description = "Dahili Hafıza: 128 GB, RAM Kapasitesi: 4 GB, Ekran Boyutu: 6.1 inç, Ekran Çözünürlüğü: 1170x2532 px, Çıkış Yılı: 2021, Ekran Yenileme Hızı: 60 Hz",
                     Category = "phone",
                     Campaign = "10% off",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -55,6 +58,7 @@ namespace Persistence
                     Description = "ARC A750, Bellek: 8 GB, INTEL, GDDR6, Bellek Arabirimi: 256 Bit, HDMI, Display Port, DirectX 12 Ultimate",
                     Category = "graphics card",
                     Campaign = "",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -63,6 +67,7 @@ namespace Persistence
                     Description = "Ekran Boyutu: 24 inç, Full HD, Yenileme Hızı: 144 Hz, Çözünürlük: 1920x1080 px, Tepki Süresi: 4 ms, HDMI, DisplayPort",
                     Category = "monitor",
                     Campaign = "",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -71,6 +76,7 @@ namespace Persistence
                     Description = "Ekran Boyutu: 27 inç, Full HD, Yenileme Hızı: 60 Hz, VA, Çözünürlük: 1920x1080 px, Tepki Süresi: 4 ms, HDMI",
                     Category = "monitor",
                     Campaign = "Free cargo, Fast cargo",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -79,6 +85,7 @@ namespace Persistence
                     Description = "4K, 55 inç / 140 cm, USB Port Sayısı: 2 , Bluetooth, Çıkış Yılı: 2022, Çözünürlük: 3840x2160 px, Uydu Alıcılı",
                     Category = "tv",
                     Campaign = "Buy 1 get 1",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -87,6 +94,7 @@ namespace Persistence
                     Description = "Laptop / Notebook, Full HD, Casper Excalibur, IPS, İşlemci Hızı: 3.3 GHz, İşlemci Çekirdek Sayısı: 8, İşlemci Önbelleği: 12 MB",
                     Category = "laptop",
                     Campaign = "20% off at basket",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -95,6 +103,7 @@ namespace Persistence
                     Description = "Aktif Gürültü Önleme, Müzik Dinleyebilme, Kulak İçi, TWS, AirPods, Bluetooth Versiyonu: 5, Konuşma Süresi: 3.5 saat, Müzik Dinleme Süresi: 4.5 saat",
                     Category = "bluetooth-headset",
                     Campaign = "Free cargo",
+                    Owner = "System"
                 },
                 new Product
                 {
@@ -103,6 +112,7 @@ namespace Persistence
                     Description = "Laptop / Notebook, Full HD, Bluetooth, Klavye Aydınlatması, İşlemci Hızı: 3.3 GHz, İşlemci Çekirdek Sayısı: 12, İşlemci Önbelleği: 18 MB",
                     Category = "laptop",
                     Campaign = "10% off",
+                    Owner = "System"
                 }
             };
 

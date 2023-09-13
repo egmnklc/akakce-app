@@ -49,7 +49,6 @@ export default class UserStore {
     router.navigate("/");
   };
 
-
   getUser = async () => {
     try {
       const user = await agent.Account.current();
@@ -60,4 +59,12 @@ export default class UserStore {
       console.log(error);
     }
   };
+
+  get getUsername() {
+    return this.user ? this.user.username : null;
+  }
+
+  get isAdmin() {
+    return this.user ? this.user.isAdmin : false;
+  }
 }

@@ -2,6 +2,7 @@ import { Button, Container, Dropdown, Image, Menu } from "semantic-ui-react";
 import { Link, NavLink } from "react-router-dom";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
+import UserStore from "../stores/userStore";
 
 export default observer(function NavBar() {
   const {
@@ -12,28 +13,34 @@ export default observer(function NavBar() {
       <Container>
         <Menu.Item as={NavLink} to={"/"} header>
           <img src="/assets/logo.png" alt="logo" style={{ marginRight: 10 }} />
-          Product-Compare
+          Campaign Assignment
         </Menu.Item>
         <Menu.Item as={NavLink} to={"/products"} name="Products" />
         <Menu.Item as={NavLink} to={"/errors"} name="Errors" />
-        <Menu.Item>
-          <Button
-            as={NavLink}
-            to={"/createProduct"}
-            positive
-            content="Create Product"
-          />
-        </Menu.Item>
+        {user?.isAdmin && (
+          <Menu.Item>
+            <Button
+              as={NavLink}
+              to={"/createProduct"}
+              positive
+              content="Create Product"
+            />
+          </Menu.Item>
+        )}
         <Menu.Item position="right">
-          <Image src={user?.image || "/assets/user.png"} avatar spaced="right" />
+          <Image
+            src={user?.image || "/assets/user.png"}
+            avatar
+            spaced="right"
+          />
           <Dropdown pointing="top left" text={user?.displayName}>
             <Dropdown.Menu>
-              <Dropdown.Item
+              {/* <Dropdown.Item
                 as={Link}
                 to={`/profile/${user?.username}`}
                 text="My Profile"
                 icon="user"
-              />
+              /> */}
               <Dropdown.Item onClick={logout} text="Logout" icon="power" />
             </Dropdown.Menu>
           </Dropdown>

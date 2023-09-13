@@ -1,10 +1,9 @@
-import { StringLiteral } from "typescript";
-
 export interface User{
     username: string;
     displayName: string;
     token: string;
     image?: string;
+    isAdmin: boolean;
 }
 
 export interface UserFormValues{

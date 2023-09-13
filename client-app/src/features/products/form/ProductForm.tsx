@@ -15,7 +15,7 @@ import MyDateInput from "./MyDateInput";
 import { v4 as uuid } from "uuid";
 
 export default observer(function ProductForm() {
-  const { productStore } = useStore();
+  const { productStore, userStore} = useStore();
   const {
     selectedProduct,
     createProduct,
@@ -34,6 +34,7 @@ export default observer(function ProductForm() {
     description: "",
     category: "",
     campaign: "",
+    owner: userStore.getUsername!
   });
 
   const validationSchema = Yup.object({
@@ -51,7 +52,9 @@ export default observer(function ProductForm() {
   function handleFormSubmit(product: Product) {
     if (!product.id) {
       product.id = uuid();
-      createProduct(product).then(() => navigate(`/products/${product.id}`));
+      console.log(userStore.getUsername)
+      createProduct(product, userStore.getUsername!).then(() => navigate(`/products/${product.id}`));
+      console.log(product)
     } else {
       updateProduct(product).then(() => navigate(`/products/${product.id}`));
     }

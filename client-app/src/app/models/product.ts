@@ -5,4 +5,5 @@ export interface Product {
   description: string;
   category: string;
   campaign: string;
+  owner: string;
 }

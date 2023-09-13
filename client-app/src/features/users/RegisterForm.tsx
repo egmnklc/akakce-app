@@ -6,7 +6,7 @@ import { useStore } from "../../app/stores/store";
 import * as Yup from "yup";
 import ValidationError from "../products/errors/ValidationError";
 
-export default observer(function LoginForm() {
+export default observer(function RegisterForm() {
   const { userStore } = useStore();
   return (
     <Formik
@@ -21,10 +21,10 @@ export default observer(function LoginForm() {
         userStore.register(values).catch((error) => setErrors({ error }))
       }
       validationSchema={Yup.object({
-        displayName: Yup.string().required(),
-        username: Yup.string().required(),
-        email: Yup.string().required(),
-        password: Yup.string().required(),
+        displayName: Yup.string().required("Display Name is a required field"),
+        username: Yup.string().required("Username is a required field"),
+        email: Yup.string().required("Email is a required field"),
+        password: Yup.string().required("Password is a required field"),
       })}
     >
       {({ handleSubmit, isSubmitting, errors, isValid, dirty }) => (
